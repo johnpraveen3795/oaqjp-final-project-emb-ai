@@ -17,4 +17,3 @@ def emotion_detector(text_to_analyze):
 
     response = requests.post(url, json=input_json, headers=headers, timeout=30)
     return response.text
-    py
