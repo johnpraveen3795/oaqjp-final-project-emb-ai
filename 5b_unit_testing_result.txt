@@ -1,0 +1,11 @@
+theia@theiadocker-johnpraveen1:/home/project/final_project$ python3 -m unittest -v test_emotion_detection.py
+test_anger (test_emotion_detection.TestEmotionDetector) ... ok
+test_disgust (test_emotion_detection.TestEmotionDetector) ... ok
+test_fear (test_emotion_detection.TestEmotionDetector) ... ok
+test_joy (test_emotion_detection.TestEmotionDetector) ... ok
+test_sadness (test_emotion_detection.TestEmotionDetector) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.584s
+
+OK
