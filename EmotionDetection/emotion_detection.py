@@ -1,9 +1,14 @@
 import json
+
 import requests
+
+
 def emotion_detector(text_to_analyze):
     """
     Sends text to the Watson NLP EmotionPredict service and returns a
     dictionary with the emotion scores and the dominant emotion.
+    If the service returns status code 400 (for example, blank input),
+    every value in the dictionary is None.
     """
     url = (
         "https://sn-watson-emotion.labs.skills.network/v1/"
@@ -15,6 +20,17 @@ def emotion_detector(text_to_analyze):
     input_json = {"raw_document": {"text": text_to_analyze}}
 
     response = requests.post(url, json=input_json, headers=headers, timeout=30)
+
+    # Error handling: blank or invalid input gives status code 400
+    if response.status_code == 400:
+        return {
+            "anger": None,
+            "disgust": None,
+            "fear": None,
+            "joy": None,
+            "sadness": None,
+            "dominant_emotion": None,
+        }
 
     # Convert the response text into a dictionary
     formatted_response = json.loads(response.text)
